@@ -1,3 +1,3 @@
 # LeetcodeSolutions
 
-Collection of LeetCode questions to ace the coding interview!
+Collection of my Solutions of LeetCode problems
