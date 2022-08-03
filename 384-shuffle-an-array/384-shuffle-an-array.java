@@ -1,35 +1,33 @@
-class Solution {
-    int[] nums;
-    int[] shuffle;
+import java.util.Random;
+
+public class Solution {
+    private int[] nums;
+    private Random random;
+
     public Solution(int[] nums) {
         this.nums = nums;
-                       
+        random = new Random();
     }
     
     /** Resets the array to its original configuration and return it. */
     public int[] reset() {
-        return this.nums;
+        return nums;
     }
     
     /** Returns a random shuffling of the array. */
     public int[] shuffle() {
-        this.shuffle = nums.clone();
-        
-        Random rand = new Random(); //instance of random class
-        int n = shuffle.length;
-        for(int i=n-1;i>=0;i--){
-            int m = rand.nextInt(i+1);
-            int temp = shuffle[m];
-            shuffle[m] = shuffle[i];
-            shuffle[i] = temp;
+        if(nums == null) return null;
+        int[] a = nums.clone();
+        for(int j = 1; j < a.length; j++) {
+            int i = random.nextInt(j + 1);
+            swap(a, i, j);
         }
-        return shuffle;
+        return a;
+    }
+    
+    private void swap(int[] a, int i, int j) {
+        int t = a[i];
+        a[i] = a[j];
+        a[j] = t;
     }
 }
-
-/**
- * Your Solution object will be instantiated and called as such:
- * Solution obj = new Solution(nums);
- * int[] param_1 = obj.reset();
- * int[] param_2 = obj.shuffle();
- */
